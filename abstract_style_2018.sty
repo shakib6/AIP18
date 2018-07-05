@@ -1,0 +1,65 @@
+% LaTeX style developed by AIP 2014 Congress, adapted by 2018 Congress
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{hyperref}
+
+%increase space between columns
+\setlength{\columnsep}{1.35cm}
+
+%configure caption layout
+\captionsetup[figure]{font=bf, skip=2pt, justification=raggedright, singlelinecheck=off}
+
+%make the section title smalle
+\renewcommand\section{\@startsection{section}{1}{\z@}{10pt}{1pt}{\normalfont\bfseries}}
+
+%add a dot behind the section number
+\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.~~}
+
+%define line spacing
+\renewcommand{\baselinestretch}{0.96} 
+
+%redefine the bibliography enviroment so it will appear as a section and reduze font size
+\renewenvironment{thebibliography}[1]
+     {\section{References}% <-- this line was changed from \section* to \section
+      \@mkboth{\MakeUppercase References}{\MakeUppercase References}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \small
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+
+%reduce space between single biblography entries
+\let\oldbibliography\thebibliography
+\renewcommand{\thebibliography}[1]{
+  \oldbibliography{#1}
+  \setlength{\itemsep}{0pt}
+}
+
+
+%textwidth=18.0cm,textheight=26.7cm,
+\usepackage[paperwidth=21.0cm,paperheight=29.7cm, top=2.5cm, bottom=2.5cm, left=1.5cm, right=1.5cm, centering]{geometry}
+\pagestyle{empty}
+\usepackage{amsmath}
+\usepackage{times} % math & rm
+\renewcommand\refname{\normalsize{\textbf{References}}\vspace{-2mm}}
+\newcommand{\papertitle}[1]{\Large{\textbf{#1}}\\}
+\newcommand{\authors}[1]{\small{#1}\\}
+\newcommand{\contact}[1]{\small{ \href{mailto:#1}{\underline{#1}} }}
+\newcommand{\affiliation}[1]{#1\\}
+\newcommand{\titleblock}[1]{\twocolumn[#1]}
+\newcommand{\starttext}{ \setcounter{equation}{0} \setcounter{figure}{0}~\\\indent}
+
+
+
